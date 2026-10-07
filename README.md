@@ -1,4 +1,4 @@
-# Quantum-to-classical correspondence in Krylov complexity
+# Classical chaotic signatures in Krylov space
 **Author**: Gastón F. Scialchi.
 * Universidad de Buenos Aires, Facultad de Ciencias Exactas y Naturales, Departamento de Fı́sica.
 * CONICET - Universidad de Buenos Aires, Instituto de Fı́sica de Buenos Aires (IFIBA).
