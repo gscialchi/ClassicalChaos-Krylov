@@ -1,0 +1,27 @@
+# This file contains the default parameter configurations that yield the
+# figures present in the final version of the paper
+
+DISABLE_DOER: False # if True, bypasses Doer functionality altogether. No calculation will be loaded or saved
+DOER_DIR: 'default'
+
+DISABLE_STORE: False # if True, disables store functionality. No operator will be loaded or saved
+STORE_DIR: 'default'
+
+SHOW_FIGURES: False # show figures at runtime
+SAVE_FIGURES: True
+FIG_DIR: 'default' # where to store figures
+FIGURES_USETEX: False # whether LaTeX will be used to render fonts in figures. See: https://matplotlib.org/stable/users/explain/text/usetex.html
+
+# ---- General calculation parameters  ----
+N_qu: 256 # Hilbert space dimension
+n_final: 20 # final time step
+
+q0: 0.2 # center of Gaussian density
+p0: 0.3
+s: 0.45 # standard deviation of Gaussian density
+
+# Parameters for Figs. 1 and 2
+ks_cats: [0.02, 0.025, 0.0275] # perturbation parameters for cat maps
+a1s_cats: [0.526, 0.698, 0.822] # corresponding RPRs from https://doi.org/10.1103/PhysRevLett.121.210601
+# NOTE: there may be a typo: k values reported in Fig. 1 are missing a zero
+
