@@ -1,3 +1,11 @@
+"""
+This library provides a class to define calculation pipelines: a sequence of
+calculations to do in order to get an end result. The idea is, if the wanted
+end results are not already-stored data, then call its `providers` in order
+to get the inputs to do the end calculation. Do this recursively until done.
+"""
+
+
 class Dummy:
     def __init__(self):
         ...
@@ -84,9 +92,3 @@ class Pipeline:
                 doer.except_if_not_found = False # next time won't be dummy
 
             iter_count += 1
-
-
-# TODO: provides si o si tiene que tener como len el numero de outputs.
-# Si puedo cambiar eso mejor, porque quizas quiero tener un doer que devulve
-# más de una cosa, pero solo me interesa una de ellas, y así solo pongo la que
-# me interesa en provides
