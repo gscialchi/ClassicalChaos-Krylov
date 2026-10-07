@@ -1,0 +1,10 @@
+.venv
+*.egg-info
+*__pycache__*
+*data*
+*figures*
+*nohup*
+docs/*tex
+docs/*bbl
+docs/*bib
+docs/*gz
