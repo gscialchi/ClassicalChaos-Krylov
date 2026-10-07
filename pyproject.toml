@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "classicalchaos_krylov"
+name = "cc_krylov"
 version = "0.1.0"
 description = "Numerical computations for the manuscript `Classical chaotic signatures in Krylov space'"
 

@@ -1,6 +1,6 @@
 import numpy as np
 
-from products import *
+from cc_krylov.products import *
 
 
 def arnoldi_FO_operator(U: np.ndarray,
