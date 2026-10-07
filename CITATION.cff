@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Scialchi"
+  given-names: "Gastón F."
+  orcid: "https://orcid.org/0009-0004-7247-1503"
+title: "Numerical code for `Classical chaotic signatures in Krylov space'"
+version: 0.1.0
+date-released: TODO
+doi: TODO
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Scialchi"
+    given-names: "Gastón F."
+    orcid: "https://orcid.org/0009-0004-7247-1503"
+  - family-names: "Roncaglia"
+    given-names: "Augusto J."
+    orcid: "https://orcid.org/0000-0001-9936-1161"
+  - family-names: "Wisniacki"
+    given-names: "Diego A."
+    orcid: "https://orcid.org/0000-0001-5733-4835"
+  title: "Classical chaotic signatures in Krylov space"
+  journal: "arXiv"
+  date-released: 2026-10-05
+  url: "https://arxiv.org/abs/2610.07352"
