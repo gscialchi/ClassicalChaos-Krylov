@@ -190,3 +190,8 @@ def coherent_ensemble_torus(f, N, qbar=QBAR, args=()):
     if abs(1 - trace) > 1e-4:
         print('WARNING: trace is not 1. Integration limits may be wrong or point density too low.')
     return out
+
+
+def coherent_ensemble_torus_traceless(f, N, qbar=QBAR, args=()):
+    rho = coherent_ensemble_torus(f, N, qbar, args)
+    return rho - np.eye(N)/N

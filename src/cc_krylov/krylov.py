@@ -73,7 +73,7 @@ def arnoldi_sequences_verblunsky(u, krylov, hbar):
     """
     u_krylov = krylov_propagator_kry(u, krylov, hbar)
     an = np.diag(u_krylov, k=0)
-    bn = np.diag(u_krylov, k=-1) # n >= 1
+    bn = np.append([0], np.diag(u_krylov, k=-1)) # add initial 0
     cn = u_krylov[0, :]
     vn = (1 - bn**2)**0.5
     return an, bn, cn, vn
