@@ -51,8 +51,8 @@ do_seqs = Doer(arnoldi_sequences_verblunsky, path=DOER_DIR,
                ignore_args=['krylov'], disabled=DISABLE_DOER)
 
 #
-do_op = Doer(coherent_ensemble_torus_traceless,
-             args={'f': periodic_gauss_2D}, disabled=DISABLE_DOER)
+do_rho = Doer(coherent_ensemble_torus_traceless,
+              args={'f': periodic_gauss_2D}, disabled=DISABLE_DOER)
 
 #
 do_u_cat = Doer(q_cat_perturbed)
@@ -76,6 +76,7 @@ for k in ks: # setup unitaries
     do_u.set_args(N=N_qu, k=k)
     cats.append(do_u)
 
+do_op = do_rho.copy()
 do_op.set_args(N=N_qu, args=(q0, p0, s)) # setup initial operator
 
 #### Calculate

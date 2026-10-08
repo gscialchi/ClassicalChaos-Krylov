@@ -7,7 +7,6 @@ from cc_krylov.maps import *
 from cc_krylov.krylov import *
 from cc_krylov.products import operator_prod
 from cc_krylov.functions import periodic_gauss_2D
-from cc_krylov.chord import chord_second_moment
 
 import cc_krylov.utilities.paths as paths
 from cc_krylov.utilities.config import get_config
@@ -15,7 +14,7 @@ from cc_krylov.utilities.pipeline import Pipeline
 from cc_krylov.utilities.store import store
 from cc_krylov.utilities.doer import Doer
 
-from plotters import plot_r2_two
+from plotters import plot_sequences_two
 
 
 # setup parser for script
@@ -48,6 +47,9 @@ do_krylov = Doer(arnoldi_FO_operator, path=DOER_DIR,
                  iterable_continue=True, continue_arg='e0',
                  disabled=DISABLE_DOER)
 
+do_seqs = Doer(arnoldi_sequences_verblunsky, path=DOER_DIR,
+               ignore_args=['krylov'], disabled=DISABLE_DOER)
+
 #
 do_rho = Doer(coherent_ensemble_torus_traceless,
               args={'f': periodic_gauss_2D}, disabled=DISABLE_DOER)
@@ -63,42 +65,49 @@ N_qu = configs['N_qu']; h = 1/(2*np.pi*N_qu) # hbar
 n_final = configs['n_final']
 
 ks = configs['ks_har_std'] # perturbation parameters for cats
-lyapunovs = configs['lyaps_har_std']
+a1s = configs['a1s_har_std']
 
 q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
 p0 = configs['p0']; p0 *= 2.7/np.e
-s = configs['s']
+ss = [configs['s_har'], configs['s']]
 
 ## apply them
 do_us = []
-for k, do_u in zip(ks, [do_u_harper, do_u_standard]): # setup unitaries
-    do_u.set_args(N=N_qu, k=k)
+do_ops = []
+for i, do_u in enumerate([do_u_harper, do_u_standard]):
+    do_u.set_args(N=N_qu, k=ks[i])
     do_us.append(do_u)
 
-do_op = do_rho.copy()
-do_op.set_args(N=N_qu, args=(q0, p0, s)) # setup initial operator
+    do_op = do_rho.copy()
+    do_op.set_args(N=N_qu, args=(q0, p0, ss[i]))
+    do_ops.append(do_op)
 
 #### Calculate
-r_krys = [[], []]
-for i, do_u in enumerate(do_us):
+seqs = [[]]*2
+for i, (do_u, do_op) in enumerate(zip(do_us, do_ops)):
     do_krylov.set_args(U=do_u, e0=do_op, n_final=n_final,
                        prod=partial(operator_prod, hbar=h))
-    krylov = do_krylov.doit()
+    do_krylov.provides = ['krylov']
 
-    r_kry = np.zeros(n_final+1)
-    for n in range(n_final+1):
-        r_kry[n] = chord_second_moment(krylov[n])
+    do_seqs.set_args(u=do_u, hbar=h)
+    do_seqs.set_fakeargs(e0=do_op, n_final=n_final)
+    do_seqs.provides = ['seqs']
 
-    r_krys[i] = r_kry
+    pipe = Pipeline(doers=[do_krylov, do_seqs])
+    pipe.doit()
+
+    an, bn, cn, _ = pipe.results['seqs']
+    seqs[i] = [an, bn[1:], cn] # ignore b0 = 0
 
 #### Plot
 FIG_DIR = configs['FIG_DIR']
 if FIG_DIR == 'default':
     FIG_DIR = paths.FIG_DIR
 
-figname = 'Figure_S2'
-plot_r2_two(r_krys, lyapunovs,
-            usetex=configs['FIGURES_USETEX'],
-            save=configs['SAVE_FIGURES'],
-            savedir=FIG_DIR + figname,
-            show=configs['SHOW_FIGURES'])
+figname = 'Figure_S1'
+plot_sequences_two(seqs,
+                   resonances=a1s, res_ranges=[slice(0, 11, 1)]*2,
+                   usetex=configs['FIGURES_USETEX'],
+                   save=configs['SAVE_FIGURES'],
+                   savedir=FIG_DIR + figname,
+                   show=configs['SHOW_FIGURES'])
