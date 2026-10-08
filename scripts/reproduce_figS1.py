@@ -64,7 +64,7 @@ do_u_standard = Doer(q_standard)
 N_qu = configs['N_qu']; h = 1/(2*np.pi*N_qu) # hbar
 n_final = configs['n_final']
 
-ks = configs['ks_har_std'] # perturbation parameters for cats
+ks = configs['ks_har_std'] # chaos parameters for maps
 a1s = configs['a1s_har_std']
 
 q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
