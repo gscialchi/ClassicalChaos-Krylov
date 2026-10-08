@@ -28,7 +28,7 @@ The following paths are relative to the repository's root directory.
 In the scripts folders you'll find scripts that reproduce each figure in the manuscript.
 You can run these scripts with
 
-```python3 scripts/reproduce_fig_N.py```
+```python3 scripts/reproduce_figN.py```
 
 
 You can run all scripts at once with
@@ -48,7 +48,7 @@ see the [Data](#data) section below.
 The code will automatically check whether
 the computations have already been made and the outputs stored
 in order to load them
-(see [About the `store` and `doer` modules](#about-the-store-and-doer-modules)).
+(see [About the `store`,`doer` and `pipeline` modules](#about-the-store-doer-and-pipeline-modules)).
 
 The full dataset that is produced by this code with the default configuration
 (see [Configuration file](#configuration-file)),
@@ -79,15 +79,15 @@ You can now run the code as described above.
 ## Configuration file
 The scripts can take an optional configuration file to modify the parameters for the calculations:
 
-```python3 scripts/reproduce_fig_N.py --config=path/to/config.yml```
+```python3 scripts/reproduce_figN.py --config=path/to/config.yml```
 
 ```python3 scripts/reproduce_all.py --config=path/to/config.yml```
 
 If no configuration file is passed, configs/defaults.yml will be used, which contains the values used for the figures present in the final version of the manuscript.
 
-## About the `store` and `doer` modules
+## About the `store`, `doer` and `pipeline` modules
 Some computations can take a while, specially when array dimensions get somewhat large.
-This is why I use two utilities that automatically check whether a given computation has already been made.
+This is why I wrote a few utilities that automatically check whether a given computation has already been made.
 If it hasn't, then it computes and stores the data.
 If it has, then it simply loads it.
 The basic idea with both is to keep track of the methods and parameters involved and use that information to unically identify the data.
@@ -95,8 +95,13 @@ The basic idea with both is to keep track of the methods and parameters involved
 The `store` module is meant to be used on 'static' things that are used repeatedly, such as the operators that define the system's Hamiltonian, propagator, initial state, etc.
 It provides a decorator that wraps the method used to compute said operators.
 
-The `doer` module is meant to be used on 'calculation pipelines'.
+The `doer` module is meant to be used on 'calculation pipelines', or on its own.
 It provides the `Doer` class which is to be used to define the 'pipeline elements'.
+A `Pipeline` is a sequences of `Doer`'s with the `provides` attribute,
+to be executed in order go get an end result.
+The idea is:
+if the wanted end results are not already-stored data, then call its `providers` in order
+to get the inputs to do the end calculation. Do this recursively until done.
 This is better explained by seeing it in action.
 
 The results of the calculations do not depend on the use of these modules,
@@ -110,8 +115,6 @@ and
 
 in the configuration file,
 which will result in the whole calculation being done from scratch.
-
-TODO: Pipeline
 
 ## Citation
 If you use the code from this repository in your research,
