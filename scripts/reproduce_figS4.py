@@ -75,7 +75,7 @@ do_u_standard = Doer(q_standard)
 
 
 #### Load parameters
-N_qu = configs['N_qu']; h = 1/(2*np.pi*N_qu) # hbar
+N_qu = configs['N_qu_alt']; h = 1/(2*np.pi*N_qu) # hbar
 n_final = configs['n_final']
 
 ks_cats = configs['ks_cats'] # perturbation parameters for cats

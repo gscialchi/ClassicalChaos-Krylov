@@ -13,15 +13,23 @@ FIG_DIR: 'default' # where to store figures
 FIGURES_USETEX: False # whether LaTeX will be used to render fonts in figures. See: https://matplotlib.org/stable/users/explain/text/usetex.html
 
 # ---- General calculation parameters  ----
-N_qu: 256 # Hilbert space dimension
+N_qu: 2048 # Hilbert space dimension
+N_qu_alt: 256
+
 n_final: 20 # final time step
 
-q0: 0.2 # center of Gaussian density
-p0: 0.3
+q0p0: [0.2, 0.3] # center of Gaussian density
 s: 0.45 # standard deviation of Gaussian density
+q0p0_alt: [0.4, 0.5]
+s_alt: 0.1
 
-# Parameters for Figs. 1 and 2
+# Parameters for cat maps
 ks_cats: [0.02, 0.025, 0.0275] # perturbation parameters for cat maps
 a1s_cats: [0.526, 0.698, 0.822] # corresponding RPRs from https://doi.org/10.1103/PhysRevLett.121.210601
-# NOTE: there may be a typo: k values reported in Fig. 1 are missing a zero
+# NOTE: there may be a typo: k values reported in Fig. 1 therein are missing a zero
+lyap_cat: 0.96242365 # log((3+5^0.5)/2) for k=0
 
+# Parameters for Harper and standard maps
+ks_har_std: [0.94, 19.74] # chaos parameters for Harper and Standard maps
+a1s_har_std: [0.38, 0.47] # corresponding RPRs from https://doi.org/10.1103/PhysRevLett.121.210601
+lyaps_har_std: [2.3234, 2.3751] # corresponding Lyapunovs for Harper and Standard maps. See: ../auxiliary/calculate_lyapunovs.py
