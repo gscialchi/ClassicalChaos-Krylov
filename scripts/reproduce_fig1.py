@@ -62,7 +62,7 @@ n_final = configs['n_final']
 
 ks = configs['ks_cats'] # perturbation parameters for cats
 k = ks[0]
-lyapunov = configs['lyapunov']
+lyapunov = configs['lyap_cat']
 
 q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
 p0 = configs['p0']; p0 *= 2.7/np.e
