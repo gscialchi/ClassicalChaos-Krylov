@@ -90,7 +90,7 @@ for i, do_u in enumerate([do_u_cat, do_u_harper, do_u_standard]):
     do_ops.append(do_op)
 
 #### Calculate
-seqs = [[]]*3
+vns = [[]]*3
 for i, (do_u, do_op) in enumerate(zip(do_us, do_ops)):
     do_krylov.set_args(U=do_u, e0=do_op, n_final=n_final,
                        prod=partial(operator_prod, hbar=h))
@@ -104,7 +104,7 @@ for i, (do_u, do_op) in enumerate(zip(do_us, do_ops)):
     pipe.doit()
 
     _, _, _, vn = pipe.results['seqs']
-    seqs[i] = vn[1:] # ignore v_{-1} = -1
+    vns[i] = vn[1:] # ignore v_{-1} = -1
 
 #### Plot
 FIG_DIR = configs['FIG_DIR']
@@ -112,7 +112,7 @@ if FIG_DIR == 'default':
     FIG_DIR = paths.FIG_DIR
 
 figname = 'Figure_S3'
-plot_verblunsky(seqs,
+plot_verblunsky(vns,
                 resonances=a1s,
                 res_ranges=[slice(0, 14, 1)]+[slice(0, 11, 1)]*2,
                 usetex=configs['FIGURES_USETEX'],
