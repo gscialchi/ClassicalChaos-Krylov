@@ -7,21 +7,21 @@ DOER_DIR: 'default'
 DISABLE_STORE: False # if True, disables store functionality. No operator will be loaded or saved
 STORE_DIR: 'default'
 
-SHOW_FIGURES: False # show figures at runtime
+SHOW_FIGURES: True # show figures at runtime
 SAVE_FIGURES: True
 FIG_DIR: 'default' # where to store figures
 FIGURES_USETEX: False # whether LaTeX will be used to render fonts in figures. See: https://matplotlib.org/stable/users/explain/text/usetex.html
 
 # ---- General calculation parameters  ----
 N_qu: 2048 # Hilbert space dimension
-N_qu_alt: 256
+N_qu_alt: 256 # used in Fig. S4
 
 n_final: 20 # final time step
 
 q0p0: [0.2, 0.3] # center of Gaussian density
 s: 0.45 # standard deviation of Gaussian density
-q0p0_alt: [0.4, 0.5]
-s_alt: 0.1
+q0p0_alt: [0.4, 0.5] # used in Fig. S4
+s_alt: 0.1 # used in Fig. S1 (left) and Fig. S4
 
 # Parameters for cat maps
 ks_cats: [0.02, 0.025, 0.0275] # perturbation parameters for cat maps
