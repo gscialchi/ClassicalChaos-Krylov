@@ -76,7 +76,7 @@ a1s = a1s_cats[:1] + a1s_hs
 
 q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
 p0 = configs['p0']; p0 *= 2.7/np.e
-ss = [configs['s'], configs['s_har'], configs['s']]
+ss = [configs['s'], configs['s_alt'], configs['s']]
 
 ## apply them
 do_us = []

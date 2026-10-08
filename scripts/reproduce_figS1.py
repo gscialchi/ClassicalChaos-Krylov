@@ -69,7 +69,7 @@ a1s = configs['a1s_har_std']
 
 q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
 p0 = configs['p0']; p0 *= 2.7/np.e
-ss = [configs['s_har'], configs['s']]
+ss = [configs['s_alt'], configs['s']]
 
 ## apply them
 do_us = []
