@@ -1,5 +1,6 @@
 import numpy as np
-from libraries.products import operator_norm
+
+from cc_krylov.products import operator_norm
 
 
 def autocorrelation(evo, hbar):
