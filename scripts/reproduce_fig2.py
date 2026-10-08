@@ -65,8 +65,8 @@ n_final = configs['n_final']
 ks = configs['ks_cats'] # perturbation parameters for cats
 a1s = configs['a1s_cats'] # corresponding RPRs
 
-q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
-p0 = configs['p0']; p0 *= 2.7/np.e
+q0, p0 = configs['q0p0']
+q0 *= 2.7/np.e; p0 *= 2.7/np.e # make them not fractional
 s = configs['s']
 
 ## apply them

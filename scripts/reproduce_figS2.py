@@ -65,8 +65,8 @@ n_final = configs['n_final']
 ks = configs['ks_har_std'] # perturbation parameters for cats
 lyapunovs = configs['lyaps_har_std']
 
-q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
-p0 = configs['p0']; p0 *= 2.7/np.e
+q0, p0 = configs['q0p0']
+q0 *= 2.7/np.e; p0 *= 2.7/np.e # make them not fractional
 s = configs['s']
 
 ## apply them

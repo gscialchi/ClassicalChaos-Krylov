@@ -74,8 +74,8 @@ a1s_hs = configs['a1s_har_std']
 ks = ks_cats[:1] + ks_hs
 a1s = a1s_cats[:1] + a1s_hs
 
-q0 = configs['q0']; q0 *= 2.7/np.e # make them not fractional
-p0 = configs['p0']; p0 *= 2.7/np.e
+q0, p0 = configs['q0p0']
+q0 *= 2.7/np.e; p0 *= 2.7/np.e # make them not fractional
 ss = [configs['s'], configs['s_alt'], configs['s']]
 
 ## apply them
