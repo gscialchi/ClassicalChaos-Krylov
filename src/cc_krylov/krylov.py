@@ -75,5 +75,5 @@ def arnoldi_sequences_verblunsky(u, krylov, hbar):
     an = np.diag(u_krylov, k=0)
     bn = np.append([0], np.diag(u_krylov, k=-1)) # add initial 0
     cn = u_krylov[0, :]
-    vn = (1 - bn**2)**0.5
+    vn = (1 - bn**2)**0.5 # this is actually |vn|
     return an, bn, cn, vn
