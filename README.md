@@ -96,12 +96,12 @@ The `store` module is meant to be used on 'static' things that are used repeated
 It provides a decorator that wraps the method used to compute said operators.
 
 The `doer` module is meant to be used on 'calculation pipelines', or on its own.
-It provides the `Doer` class which is to be used to define the 'pipeline elements'.
+It provides the `Doer` class which is used to define the 'pipeline elements'.
 A `Pipeline` is a sequence of `Doer`'s with the `provides` attribute,
 to be executed in order go get an end result.
 The idea is:
 if the wanted end results are not already-stored data, then call its `providers` in order
-to get the input data necessary to do the end calculation.
+to get the input data necessary to realize the end calculation.
 Do this recursively until done.
 This is better explained by seeing it in action.
 
