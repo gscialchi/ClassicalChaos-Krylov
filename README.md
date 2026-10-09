@@ -97,11 +97,12 @@ It provides a decorator that wraps the method used to compute said operators.
 
 The `doer` module is meant to be used on 'calculation pipelines', or on its own.
 It provides the `Doer` class which is to be used to define the 'pipeline elements'.
-A `Pipeline` is a sequences of `Doer`'s with the `provides` attribute,
+A `Pipeline` is a sequence of `Doer`'s with the `provides` attribute,
 to be executed in order go get an end result.
 The idea is:
 if the wanted end results are not already-stored data, then call its `providers` in order
-to get the inputs to do the end calculation. Do this recursively until done.
+to get the input data necessary to do the end calculation.
+Do this recursively until done.
 This is better explained by seeing it in action.
 
 The results of the calculations do not depend on the use of these modules,
@@ -114,7 +115,12 @@ and
 ```DISABLE_DOER: True```
 
 in the configuration file,
-which will result in the whole calculation being done from scratch.
+which will result in all calculations being done from scratch every time.
+
+__Note:__ even if you do not wish to use the dataset
+I recomend that you leave these modules enabled
+so that the results from the calculations to get one figure
+may be used for the next.
 
 ## Citation
 If you use the code from this repository in your research,
