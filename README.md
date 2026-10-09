@@ -55,7 +55,7 @@ The full dataset that is produced by this code with the default configuration
 and that appears in the figures present in the final version of the manuscript,
 is available on Zenodo:
 
-TODO: Zenodo DOI
+TODO: Zenodo Dataset DOI
 
 Here are the steps to use it:
 1. Download the dataset from the link above
@@ -126,7 +126,7 @@ may be used for the next.
 If you use the code from this repository in your research,
 please cite:
 
-TODO: Zenodo DOI
+TODO: Zenodo Code DOI
 
 If you use the results of the paper, please cite:
 ```
