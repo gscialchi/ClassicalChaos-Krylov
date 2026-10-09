@@ -6,8 +6,8 @@ authors:
   orcid: "https://orcid.org/0009-0004-7247-1503"
 title: "Numerical code for `Classical chaotic signatures in Krylov space'"
 version: 0.1.0
-date-released: TODO
-doi: TODO
+date-released: 2026-10-09
+doi: https://doi.org/10.5281/zenodo.23271012
 preferred-citation:
   type: article
   authors:

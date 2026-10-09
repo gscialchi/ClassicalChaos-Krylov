@@ -126,7 +126,7 @@ may be used for the next.
 If you use the code from this repository in your research,
 please cite:
 
-TODO: Zenodo Code DOI
+https://doi.org/10.5281/zenodo.23271012
 
 If you use the results of the paper, please cite:
 ```
